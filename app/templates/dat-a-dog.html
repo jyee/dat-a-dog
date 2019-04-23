@@ -1,0 +1,67 @@
+<!doctype html>
+<head>
+  <title>Dat-a-dog?</title>
+
+  <style>
+    body {
+      background-color: #ffffff;
+      text-align: center;
+      color: #333333;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    h1 {
+      font-size: 60px;
+    }
+    h2 {
+      font-size: 40px;
+    }
+    .buttons {
+      width: 640px;
+      margin: auto;
+    }
+    img {
+      width: 640px;
+      height: auto;
+    }
+    a {
+      display: block;
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      border-radius: 25px;
+      padding: 25px;
+      margin: 25px;
+      font-size: 40px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    a.no {
+      background-color: #990000;
+      float: left;
+    }
+    a.yes {
+      background-color: #009900;
+      float: right;
+    }
+     
+  </style>
+</head>
+<body>
+  {% if conference %}
+  <h1>Yo {{ conference }}!</h1>
+  {% endif %}
+
+
+  {% if message %}
+  <h2>{{ message }}</h2>
+  {% endif %}
+
+  <h2>Is dat a dog?</h2>
+
+  <img src="{{image}}" alt="Is dat a dog?" />
+
+  <div class="buttons">
+    <a class="yes" href="/is-dog/yes">YES!</a>
+    <a class="no" href="/is-dog/no">No.<a/>
+  </div>
+</body>
