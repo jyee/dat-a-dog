@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: dat-a-dog
+  name: dat-a-dog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: dat-a-dog
+  template:
+    metadata:
+      labels:
+        run: dat-a-dog
+    spec:
+      containers:
+      - name: dat-a-dog
+        image: jyee/dat-a-dog:1.0.0
+        imagePullPolicy: Always
+        env:
+        - name: DD_SERVICE_ENV
+          value: <YOUR DEMO ENV NAME>
+        - name: DD_CONF_NAME
+          value: <YOUR CONFERENCE NAME>
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: dat-a-dog
+  name: dat-a-dog
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    run: dat-a-dog
+  type: LoadBalancer
