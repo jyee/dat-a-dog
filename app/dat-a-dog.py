@@ -34,9 +34,6 @@ def count_dog(is_dog):
 
 
 def get_image():
-  sources = ["https://dog.ceo/api/breeds/image/random", "https://api.thecatapi.com/v1/images/search"]
-  source = random.choice(sources)
-
   if random.randint(0,1):
     r = requests.get("https://dog.ceo/api/breeds/image/random")
     data = r.json()
