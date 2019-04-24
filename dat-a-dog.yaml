@@ -16,11 +16,9 @@ spec:
     spec:
       containers:
       - name: dat-a-dog
-        image: jyee/dat-a-dog:1.0.2
+        image: jyee/dat-a-dog:1.0.3
         imagePullPolicy: Always
         env:
-        - name: DD_SERVICE_ENV
-          value: <YOUR DEMO ENV NAME>
         - name: DD_CONF_NAME
           value: <YOUR CONFERENCE NAME>
         - name: DOGSTATSD_HOST_IP
