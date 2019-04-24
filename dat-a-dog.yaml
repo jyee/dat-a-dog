@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dat-a-dog
-        image: jyee/dat-a-dog:1.0.1
+        image: jyee/dat-a-dog:1.0.2
         imagePullPolicy: Always
         env:
         - name: DD_SERVICE_ENV
