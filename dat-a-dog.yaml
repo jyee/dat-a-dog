@@ -23,6 +23,10 @@ spec:
           value: <YOUR DEMO ENV NAME>
         - name: DD_CONF_NAME
           value: <YOUR CONFERENCE NAME>
+        - name: DOGSTATSD_HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         ports:
         - containerPort: 5000
           protocol: TCP

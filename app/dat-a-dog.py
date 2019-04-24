@@ -4,8 +4,11 @@ import requests
 import os, random
 
 # Datadog tracing and metrics
-from datadog import statsd
-from ddtrace import patch_all
+from datadog import initialize, statsd
+from ddtrace import tracer, patch_all
+if "DOGSTATSD_HOST_IP" in os.environ:
+  initialize(statsd_host = os.environ.get("DOGSTATSD_HOST_IP"))
+  tracer.configure(hostname = os.environ.get("DOGSTATSD_HOST_IP"))
 patch_all()
 
 app = Flask(__name__)
