@@ -6,10 +6,13 @@ import os, random
 # Datadog tracing and metrics
 from datadog import initialize, statsd
 from ddtrace import tracer, patch_all
+
+# If we're getting a DogStatD host (i.e. running in Kubernetes), initialize with it.
 if "DOGSTATSD_HOST_IP" in os.environ:
   initialize(statsd_host = os.environ.get("DOGSTATSD_HOST_IP"))
   tracer.configure(hostname = os.environ.get("DOGSTATSD_HOST_IP"))
 
+# Apply some base tags and patch for Datadog tracing.
 statsd.constant_tags = ["env:confdemo"]
 patch_all()
 
@@ -24,7 +27,6 @@ def index():
 
 @app.route("/is-dog/<is_dog>")
 def count_dog(is_dog):
-  # Count page views.
   statsd.increment("dat_a_dog.pageviews", tags = ["page:count_dog"])
 
   if is_dog == "yes":
@@ -38,6 +40,7 @@ def count_dog(is_dog):
 
 
 def get_image():
+  # Randomize between our dog and cat sources. Each API returns an image URL.
   if random.randint(0,1):
     statsd.increment("dat_a_dog.generated.dogs")
     r = requests.get("https://dog.ceo/api/breeds/image/random")
