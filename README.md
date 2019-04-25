@@ -2,7 +2,7 @@
 
 This is just a silly example app to use for various demos.
 
-<img src="https://raw.githubusercontent.com/jyee/dat-a-dog/master/dat-a-dog.ogg" alt="This app is useless if you're blind." style="width:50%; height:auto;" />
+<img src="https://github.com/jyee/dat-a-dog/raw/master/dat-a-dog.gif" alt="This app is useless if you're blind." style="width:50%; height:auto;" />
 
 ## Running the app in Docker
 
